@@ -22,6 +22,10 @@ struct FullName {
         is >> fn.surname >> fn.name >> fn.patronymic;
         return is;
     }
+
+    string getName() const {
+        return name;
+    }
 };
 
 // Клас асоціації номер телефону <-> ПІБ
@@ -106,14 +110,9 @@ int main() {
         FullName found = book[searchPhone];
         if (CodeError == 0) {
             cout << "Знайдений абонент: " << found << '\n';
+            cout << "Ім’я абонента: " << found.getName() << '\n';  // Виведення лише імені
         } else {
             cout << "Абонент з таким номером не знайдений.\n";
-        }
-
-        // Альтернативний пошук
-        found = book(searchPhone);
-        if (CodeError == 0) {
-            cout << "Альтернативний доступ: " << found << '\n';
         }
     }
 
